@@ -1,17 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './pages/Home';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+import { Outlet } from 'react-router-dom';
+import { AppProvider } from '@toolpad/core/AppProvider';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SearchIcon from '@mui/icons-material/Search';
+
+
+const NAVIGATION = [
+  {
+    segment: 'home',
+    title: 'Home',
+    icon: <DescriptionIcon />,
+  },
+  {
+    segment: 'search',
+    title: 'Search',
+    icon: <SearchIcon />,
+  },
+]
+
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Sidebar/>
-      <Home/>
-    </div>
+    <AppProvider
+      navigation={NAVIGATION}
+    >
+      <Outlet />
+    </AppProvider>
   );
 }
 
