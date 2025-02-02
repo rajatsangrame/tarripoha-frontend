@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import DescriptionIcon from '@mui/icons-material/Description';
 import SearchIcon from '@mui/icons-material/Search';
+import { Bookmark } from '@mui/icons-material';
 
 
 const NAVIGATION = [
@@ -14,6 +15,11 @@ const NAVIGATION = [
     segment: 'search',
     title: 'Search',
     icon: <SearchIcon />,
+  },
+  {
+    segment: 'saved',
+    title: 'Saved',
+    icon: <Bookmark />,
   },
 ]
 
