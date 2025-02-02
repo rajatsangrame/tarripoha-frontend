@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import { useDemoRouter } from '@toolpad/core/internal';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import Layout from './layout/Layout';
