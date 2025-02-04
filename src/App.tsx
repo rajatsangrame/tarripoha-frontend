@@ -4,7 +4,8 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import SearchIcon from '@mui/icons-material/Search';
 import { Bookmark } from '@mui/icons-material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-const queryClient = new QueryClient(); 
+import theme from './theme';
+const queryClient = new QueryClient();
 
 
 const NAVIGATION = [
@@ -28,8 +29,13 @@ const NAVIGATION = [
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}> 
-      <AppProvider navigation={NAVIGATION}>
+    <QueryClientProvider client={queryClient}>
+      <AppProvider navigation={NAVIGATION}
+        theme={theme}
+        branding={{
+          title: 'Tarripoha',
+          homeUrl: 'http://localhost:3000/home',
+        }}>
         <Outlet />
       </AppProvider>
     </QueryClientProvider>

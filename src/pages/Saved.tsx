@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 
 interface Word {
     id: number;
@@ -34,19 +34,31 @@ export default function Saved() {
     }
 
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', width: 100 },
-        { field: 'name', headerName: 'Word', width: 200 },
-        { field: 'meaning', headerName: 'Meaning', width: 300 },
+        { field: "name", headerName: "Word", align: "center", headerAlign: "center", width: 200 },
+        { field: "meaning", headerName: "Meaning", align: "center", headerAlign: "center", width: 200 },
     ];
 
     return (
         <Container>
-            <Typography variant="h4" gutterBottom>
-                Saved Words
-            </Typography>
+            <Box
+                sx={{
+                    py: 4,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                }}
+            >
+                <Typography variant="h4" gutterBottom>Saved Words</Typography>
+            </Box>
             <DataGrid
                 rows={words || []}
                 columns={columns}
+                sx={{
+                    '& .MuiDataGrid-colu': {
+                        fontWeight: 'bold',
+                    },
+                }}
             />
         </Container>
     );
