@@ -1,26 +1,41 @@
-
-"use client";
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({
-  cssVariables: {
-    colorSchemeSelector: 'data-toolpad-color-scheme',
-  },
-  typography: {
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-  },
-  colorSchemes: { light: true, dark: true },
-});
+const createCustomTheme = (mode: 'light' | 'dark') => {
+  return createTheme({
+    palette: {
+      mode: mode,
+      divider: mode === 'light' ? '#ddd' : '#696969',
+    },
+    typography: {
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+      ].join(','),
+    },
+    components: {
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            backgroundColor: mode === 'light' ? '#fff' : '#000',
+            color: mode === 'light' ? '#000' : '#fff',
+          },
+        },
+      },
+      MuiDrawer: {
+        styleOverrides: {
+          root: {
+            backgroundColor: mode === 'light' ? '#fff' : '#000',
+            color: mode === 'light' ? '#000' : '#fff',
+          },
+        },
+      },
+    },
+  });
+};
 
-export default theme;
+export default createCustomTheme;

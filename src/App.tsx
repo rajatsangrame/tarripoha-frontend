@@ -1,45 +1,10 @@
-import { Outlet } from 'react-router-dom';
-import { AppProvider } from '@toolpad/core/AppProvider';
-import DescriptionIcon from '@mui/icons-material/Description';
-import SearchIcon from '@mui/icons-material/Search';
-import { Bookmark } from '@mui/icons-material';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import theme from './theme';
-const queryClient = new QueryClient();
+import React from "react";
+import NavigationBar from "./component/NavigationBar";
 
-
-const NAVIGATION = [
-  {
-    segment: 'home',
-    title: 'Home',
-    icon: <DescriptionIcon />,
-  },
-  {
-    segment: 'search',
-    title: 'Search',
-    icon: <SearchIcon />,
-  },
-  {
-    segment: 'saved',
-    title: 'Saved',
-    icon: <Bookmark />,
-  },
-]
-
-
-function App() {
+export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <AppProvider navigation={NAVIGATION}
-        theme={theme}
-        branding={{
-          title: 'Tarripoha',
-          homeUrl: 'http://localhost:3000/home',
-        }}>
-        <Outlet />
-      </AppProvider>
-    </QueryClientProvider>
+    <div>
+      <NavigationBar />
+    </div>
   );
 }
-
-export default App;

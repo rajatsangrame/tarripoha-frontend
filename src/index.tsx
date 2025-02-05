@@ -6,7 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import Saved from './pages/Saved';
-import Layout from './layout/Layout';
+import Login from './pages/Login';
+import Navbar from './component/NavigationBar';
 
 
 
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        Component: Layout,
+        Component: Navbar,
         children: [
           {
             path: '/home',
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
           {
             path: '/saved',
             Component: Saved,
+          },
+          {
+            path: '/login',
+            Component: Login,
+          },
+          {
+            path: '/rajat',
+            Component: Login,
           }
         ]
       }

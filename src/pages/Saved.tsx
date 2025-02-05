@@ -58,6 +58,10 @@ export default function Saved() {
                     '& .MuiDataGrid-colu': {
                         fontWeight: 'bold',
                     },
+                    borderColor: 'primary.light',
+                    '& .MuiDataGrid-cell:hover': {
+                      color: 'primary.main',
+                    },
                 }}
             />
         </Container>
