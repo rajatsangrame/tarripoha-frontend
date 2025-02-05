@@ -1,11 +1,9 @@
 import { createTheme } from '@mui/material/styles';
+import type {} from '@mui/x-data-grid/themeAugmentation';
+
 
 const createCustomTheme = (mode: 'light' | 'dark') => {
   return createTheme({
-    palette: {
-      mode: mode,
-      divider: mode === 'light' ? '#ddd' : '#696969',
-    },
     typography: {
       fontFamily: [
         '-apple-system',
@@ -33,6 +31,17 @@ const createCustomTheme = (mode: 'light' | 'dark') => {
             color: mode === 'light' ? '#000' : '#fff',
           },
         },
+      },
+    },
+    palette: {
+      mode: mode,
+      divider: mode === 'light' ? '#ddd' : '#696969',
+      text: {
+        primary: mode === "dark" ? "#fff" : "#000",
+      },
+      background: {
+        default: mode === 'light' ? '#ffffff' : '#000',
+        paper: mode === 'light' ? '#ffffff' : '#000',
       },
     },
   });

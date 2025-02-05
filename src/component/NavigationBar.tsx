@@ -4,30 +4,31 @@ import MenuOpen from "@mui/icons-material/MenuOpen";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import CorporateFare from "@mui/icons-material/CorporateFare";
-import createCustomTheme from "../theme";
-import { ThemeProvider } from "@emotion/react";
 import { DrawerMenuItems } from './DrawerMenuItems';
 import { AppBar, Button, Divider, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+
 
 const drawerWidthCollapsed = 60;
 const drawerWidthExpanded = 300;
 
-export default function Navbar() {
+interface NavigationBarProps {
+    toggleTheme: () => void;
+    isDarkMode: boolean;
+}
+
+export const NavigationBar: React.FC<NavigationBarProps> = ({ toggleTheme, isDarkMode }) => {
+
     const [drawerOpen, setDrawerOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
 
     const toggleDrawer = () => {
         setDrawerOpen((prev) => !prev);
     };
 
-    const toggleTheme = () => {
-        setIsDarkMode((prev) => !prev);
-    };
-
-    const theme = createCustomTheme(isDarkMode ? 'dark' : 'light');
+    const theme = useTheme();
 
     return (
-        <ThemeProvider theme={theme}>
+        <>
             <AppBar position="static" sx={{ boxShadow: "none" }}>
                 <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer} sx={{ mr: 2 }}>
@@ -49,6 +50,7 @@ export default function Navbar() {
                 </Toolbar>
             </AppBar>
 
+
             <Divider sx={{ borderBottomWidth: 1, borderColor: theme.palette.divider }} />
 
             <Drawer
@@ -67,6 +69,6 @@ export default function Navbar() {
             >
                 <DrawerMenuItems drawerOpen={drawerOpen} />
             </Drawer>
-        </ThemeProvider>
+        </>
     );
 }

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box, Container, Typography } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
 
 interface Word {
     id: number;
@@ -38,6 +39,8 @@ export default function Saved() {
         { field: "meaning", headerName: "Meaning", align: "center", headerAlign: "center", width: 200 },
     ];
 
+    const theme = useTheme();
+
     return (
         <Container>
             <Box
@@ -47,9 +50,13 @@ export default function Saved() {
                     flexDirection: 'column',
                     alignItems: 'center',
                     textAlign: 'center',
+                    width: '100%',
                 }}
             >
-                <Typography variant="h4" gutterBottom>Saved Words</Typography>
+                <Typography variant="h4" sx={{
+                    color: theme.palette.text.primary
+
+                }} gutterBottom>Saved Words</Typography>
             </Box>
             <DataGrid
                 rows={words || []}
@@ -58,9 +65,8 @@ export default function Saved() {
                     '& .MuiDataGrid-colu': {
                         fontWeight: 'bold',
                     },
-                    borderColor: 'primary.light',
                     '& .MuiDataGrid-cell:hover': {
-                      color: 'primary.main',
+                        color: 'primary.main',
                     },
                 }}
             />
