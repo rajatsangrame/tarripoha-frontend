@@ -11,7 +11,7 @@ export default function Search() {
                 textAlign: 'center',
             }}
         >
-            <Typography>Dashboard content for Saved</Typography>
+            <Typography>Dashboard content for Search</Typography>
         </Box>
     );
 }

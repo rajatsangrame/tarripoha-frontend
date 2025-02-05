@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function Search() {
+export default function Home() {
     return (
         <Box
             sx={{

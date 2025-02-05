@@ -3,7 +3,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpen from "@mui/icons-material/MenuOpen";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import TableRestaurantTwoTone from "@mui/icons-material/TableRestaurantTwoTone";
+import CorporateFare from "@mui/icons-material/CorporateFare";
 import createCustomTheme from "../theme";
 import { ThemeProvider } from "@emotion/react";
 import { DrawerMenuItems } from './DrawerMenuItems';
@@ -35,7 +35,7 @@ export default function Navbar() {
                     </IconButton>
 
                     <IconButton edge="start" color="inherit" aria-label="logo" sx={{ ml: 1, mr: 2 }}>
-                        <TableRestaurantTwoTone />
+                        <CorporateFare />
                     </IconButton>
 
                     <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: "bold" }}>
