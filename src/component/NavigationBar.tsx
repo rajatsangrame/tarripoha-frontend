@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpen from "@mui/icons-material/MenuOpen";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -13,17 +13,13 @@ const drawerWidthCollapsed = 60;
 const drawerWidthExpanded = 300;
 
 interface NavigationBarProps {
-    toggleTheme: () => void;
     isDarkMode: boolean;
+    drawerOpen: boolean;
+    toggleTheme: () => void;
+    toggleDrawer: () => void;
 }
 
-export const NavigationBar: React.FC<NavigationBarProps> = ({ toggleTheme, isDarkMode }) => {
-
-    const [drawerOpen, setDrawerOpen] = useState(false);
-
-    const toggleDrawer = () => {
-        setDrawerOpen((prev) => !prev);
-    };
+export const NavigationBar: React.FC<NavigationBarProps> = ({ toggleTheme, isDarkMode, drawerOpen, toggleDrawer }) => {
 
     const theme = useTheme();
 
@@ -50,7 +46,6 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ toggleTheme, isDar
                     <ToolbarAccount />
                 </Toolbar>
             </AppBar>
-
 
             <Divider sx={{ borderBottomWidth: 1, borderColor: theme.palette.divider }} />
 
