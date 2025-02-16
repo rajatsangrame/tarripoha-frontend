@@ -5,9 +5,9 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import CorporateFare from "@mui/icons-material/CorporateFare";
 import { DrawerMenuItems } from './DrawerMenuItems';
-import { AppBar, Button, Divider, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Divider, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-
+import ToolbarAccount from "./ToolbarAccount";
 
 const drawerWidthCollapsed = 60;
 const drawerWidthExpanded = 300;
@@ -43,10 +43,11 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ toggleTheme, isDar
                         Tarripoha
                     </Typography>
 
-                    <Button color="inherit">Login</Button>
                     <IconButton color="inherit" onClick={toggleTheme}>
                         {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
                     </IconButton>
+
+                    <ToolbarAccount />
                 </Toolbar>
             </AppBar>
 

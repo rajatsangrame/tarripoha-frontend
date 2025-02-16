@@ -3,6 +3,7 @@ import axios from 'axios';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box, Container, Typography } from '@mui/material';
 import { useTheme } from "@mui/material/styles";
+import { useAuth } from "../context/AuthContext";
 
 interface Word {
     id: number;
@@ -11,8 +12,7 @@ interface Word {
     languageId: number;
 }
 
-const fetchSavedWords = async (): Promise<Word[]> => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJ1c2VybmFtZSI6InJhamF0Iiwicm9sZXMiOlsiQURNSU4iLCJVU0VSIl0sImlhdCI6MTczODUyOTA1NywiZXhwIjoxNzM5MTMzODU3fQ.lv68oI6eYPBB_L7kKEnmLURez8fWhScirpkEUQJA7vA'
+const fetchSavedWords = async (token: string): Promise<Word[]> => {
     const response = await axios.get<Word[]>('http://localhost:3001/word/get-words', {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -23,9 +23,12 @@ const fetchSavedWords = async (): Promise<Word[]> => {
 };
 
 export default function Saved() {
+    const { getToken } = useAuth();
+    const token = getToken();
+
     const { data: words, error, isLoading } = useQuery({
         queryKey: ['savedWords'],
-        queryFn: fetchSavedWords,
+        queryFn: () => fetchSavedWords(token ?? "")
     });
 
     if (isLoading) return <Typography>Loading...</Typography>;
