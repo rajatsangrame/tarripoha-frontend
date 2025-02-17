@@ -43,7 +43,7 @@ export default function AuthButton() {
                     >
                         {user.email}
                     </Typography>
-                    <Avatar sx={{ mx: "auto", width: 50, height: 50, mt : 1 }}>
+                    <Avatar sx={{ mx: "auto", width: 50, height: 50, mt: 1 }}>
                         {user.firstName ? user.firstName.charAt(0).toUpperCase() : "U"}
                     </Avatar>
                     <Typography variant="subtitle1" sx={{ mt: 1 }}>

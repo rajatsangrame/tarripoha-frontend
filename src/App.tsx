@@ -36,12 +36,7 @@ const App: React.FC = () => {
               drawerWidthCollapsed={drawerWidthCollapsed}
               drawerWidthExpanded={drawerWidthExpanded}
             />
-            <Box component="main" sx={{
-              flexGrow: 1,
-            }}>
-              <MainContainer />
-            </Box>
-
+            <MainContainer />
           </Box>
         </Box>
       </AuthProvider>
