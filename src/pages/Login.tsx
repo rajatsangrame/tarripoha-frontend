@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Button, TextField, Box, Typography } from "@mui/material";
-import { ThemeProvider, useTheme } from "@emotion/react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+interface LoginProps {
+  showSnackbar: (msg: string, type: "success" | "error") => void;
+}
+
+export default function Login({ showSnackbar }: LoginProps) {
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const { login } = useAuth()
@@ -29,54 +32,52 @@ export default function Login() {
       const data = await response.json();
       login(data.accessToken);
       navigate("/", { replace: true });
+      showSnackbar("Login successful", "success");
     } catch (err: any) {
       setError(err.message);
     }
   };
 
-  const theme = useTheme();
   return (
-    <ThemeProvider theme={theme}>
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        marginTop={'64px'}
-        height="100vh"
-      >
-        <Typography variant="h4" fontWeight="bold" mb={2}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      marginTop={'64px'}
+      height="100vh"
+    >
+      <Typography variant="h4" fontWeight="bold" mb={2}>
+        Login
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit} width={300}>
+        <TextField
+          fullWidth
+          label="Email or Username"
+          name="username"
+          value={credentials.username}
+          onChange={handleChange}
+          margin="normal"
+          required
+        />
+        <TextField
+          fullWidth
+          label="Password"
+          type="password"
+          name="password"
+          value={credentials.password}
+          onChange={handleChange}
+          margin="normal"
+          required
+        />
+        {error && (
+          <Typography color="error" mt={1}>
+            {error}
+          </Typography>
+        )}
+        <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
           Login
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} width={300}>
-          <TextField
-            fullWidth
-            label="Email or Username"
-            name="username"
-            value={credentials.username}
-            onChange={handleChange}
-            margin="normal"
-            required
-          />
-          <TextField
-            fullWidth
-            label="Password"
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            margin="normal"
-            required
-          />
-          {error && (
-            <Typography color="error" mt={1}>
-              {error}
-            </Typography>
-          )}
-          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
-            Login
-          </Button>
-        </Box>
+        </Button>
       </Box>
-    </ThemeProvider>
+    </Box>
   );
 }
