@@ -25,9 +25,10 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({ drawerOpen, drawerW
         sx={{
           width: drawerOpen ? drawerWidthExpanded : drawerWidthCollapsed,
           flexShrink: 0,
+          transition: "width 0.3s ease",
           "& .MuiDrawer-paper": {
             width: drawerOpen ? drawerWidthExpanded : drawerWidthCollapsed,
-            transition: "width 0.2s ease-in-out",
+            transition: "width 0.3s ease",
           },
         }}>
         <DrawerHeader />
