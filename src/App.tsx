@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 import NavigationDrawer from "./component/NavigationDrawer";
 import { AppToolbar } from "./component/AppToolbar";
 import MainContainer from "./component/MainContainer";
@@ -18,11 +18,11 @@ const App: React.FC = () => {
   const theme = createCustomTheme(isDarkMode ? "dark" : "light");
 
   const drawerWidthCollapsed = 60;
-  const drawerWidthExpanded = 250;
+  const drawerWidthExpanded = 240;
 
   return (
     <ThemeProvider theme={theme}>
-
+      <CssBaseline />
       <AuthProvider>
         <Box display="flex" flexDirection="column" height="100vh">
           <AppToolbar toggleTheme={toggleTheme}

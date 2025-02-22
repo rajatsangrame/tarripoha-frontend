@@ -42,8 +42,6 @@ export default function Saved() {
         { field: "meaning", headerName: "Meaning", align: "center", headerAlign: "center", width: 200 },
     ];
 
-    const theme = useTheme();
-
     return (
         <Container>
             <Box
@@ -56,10 +54,7 @@ export default function Saved() {
                     width: '100%',
                 }}
             >
-                <Typography variant="h4" sx={{
-                    color: theme.palette.text.primary
-
-                }} gutterBottom>Saved Words</Typography>
+                <Typography variant="h4">Saved Words</Typography>
             </Box>
             <DataGrid
                 rows={words || []}
