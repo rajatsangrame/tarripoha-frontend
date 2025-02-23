@@ -4,8 +4,11 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import { useDialogStore } from "../store/dialogStore";
 
-export default function AuthButton() {
+export default function ToolbarAccount() {
+    const showDialog = useDialogStore((state) => state.showDialog);
+
     const { user, logout } = useAuth();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -17,7 +20,6 @@ export default function AuthButton() {
         setAnchorEl(null);
     };
 
-    console.log({ user })
     return user ? (
         <>
             <IconButton onClick={handleMenuOpen} sx={{ color: "white" }}>
@@ -55,7 +57,11 @@ export default function AuthButton() {
 
                 <MenuItem
                     onClick={() => {
-                        logout();
+                        showDialog(
+                            "Confirm Logout",
+                            "Are you sure you want to log out?",
+                            logout,
+                        );
                         handleMenuClose();
                     }}
                 >

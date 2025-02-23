@@ -7,6 +7,7 @@ import { useState } from "react";
 import createCustomTheme from "./theme";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "@emotion/react";
+import GlobalDialog from "./component/GlobalDialog";
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -38,6 +39,7 @@ const App: React.FC = () => {
             />
             <MainContainer />
           </Box>
+          <GlobalDialog />
         </Box>
       </AuthProvider>
     </ThemeProvider>
