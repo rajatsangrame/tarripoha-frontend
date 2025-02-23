@@ -5,9 +5,11 @@ import LoginIcon from "@mui/icons-material/Login";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useDialogStore } from "../store/dialogStore";
+import { useSnackbarStore } from "../store/snackbarStore";
 
 export default function ToolbarAccount() {
     const showDialog = useDialogStore((state) => state.showDialog);
+    const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     const { user, logout } = useAuth();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -60,7 +62,10 @@ export default function ToolbarAccount() {
                         showDialog(
                             "Confirm Logout",
                             "Are you sure you want to log out?",
-                            logout,
+                            () => {
+                                logout();
+                                showSnackbar("Logged out successfully!");
+                            }
                         );
                         handleMenuClose();
                     }}

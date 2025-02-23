@@ -1,22 +1,18 @@
 import React from "react";
 import { Snackbar, Alert, AlertTitle } from "@mui/material";
+import { useSnackbarStore } from "../store/snackbarStore";
 
-interface SnackbarAlertProps {
-  open: boolean;
-  message: string;
-  severity: "success" | "error" | "warning" | "info";
-  onClose: () => void;
-}
+const GlobalSnackbar: React.FC = () => {
+  const { open, message, severity, hideSnackbar } = useSnackbarStore();
 
-const SnackbarAlert: React.FC<SnackbarAlertProps> = ({ open, message, severity, onClose }) => {
   return (
     <Snackbar
       open={open}
       autoHideDuration={2000}
-      onClose={onClose}
+      onClose={hideSnackbar}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
     >
-      <Alert onClose={onClose} severity={severity} sx={{ width: "100%" }}>
+      <Alert onClose={hideSnackbar} severity={severity} sx={{ width: "100%" }}>
         <AlertTitle>{severity.charAt(0).toUpperCase() + severity.slice(1)}</AlertTitle>
         {message}
       </Alert>
@@ -24,4 +20,4 @@ const SnackbarAlert: React.FC<SnackbarAlertProps> = ({ open, message, severity, 
   );
 };
 
-export default SnackbarAlert;
+export default GlobalSnackbar;

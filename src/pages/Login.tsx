@@ -2,16 +2,15 @@ import { useState } from "react";
 import { Button, TextField, Box, Typography } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useSnackbarStore } from "../store/snackbarStore";
 
-interface LoginProps {
-  showSnackbar: (msg: string, type: "success" | "error") => void;
-}
 
-export default function Login({ showSnackbar }: LoginProps) {
+export default function Login() {
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const { login } = useAuth()
   const navigate = useNavigate();
+  const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -31,8 +30,8 @@ export default function Login({ showSnackbar }: LoginProps) {
 
       const data = await response.json();
       login(data.accessToken);
-      navigate("/", { replace: true });
-      showSnackbar("Login successful", "success");
+      navigate("/home", { replace: true });
+      showSnackbar("Logged in successfully!");
     } catch (err: any) {
       setError(err.message);
     }

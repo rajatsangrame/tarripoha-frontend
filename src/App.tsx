@@ -8,6 +8,7 @@ import createCustomTheme from "./theme";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "@emotion/react";
 import GlobalDialog from "./component/GlobalDialog";
+import GlobalSnackbar from "./component/GlobalSnackbar";
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -39,6 +40,7 @@ const App: React.FC = () => {
             />
             <MainContainer />
           </Box>
+          <GlobalSnackbar />
           <GlobalDialog />
         </Box>
       </AuthProvider>
