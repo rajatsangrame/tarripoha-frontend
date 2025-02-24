@@ -17,10 +17,10 @@ const createCustomTheme = (mode: 'light' | 'dark') => {
       dark: '#B2B2B2',
     },
     secondary: {
-      main: '#6AA84F',
-      light: '#87B972',
+      main: '#000',
+      light: '#000',
     },
-    divider: '#EEE',
+    divider: '#DDD',
   };
 
   const dark = {
@@ -38,10 +38,10 @@ const createCustomTheme = (mode: 'light' | 'dark') => {
       dark: '#B2B2B2',
     },
     secondary: {
-      main: '#6AA84F',
-      light: '#87B972',
+      main: '#fff',
+      light: '#fff',
     },
-    divider: '#EEE',
+    divider: '#333',
   };
 
   return createTheme({
@@ -63,7 +63,7 @@ const createCustomTheme = (mode: 'light' | 'dark') => {
           paper: {
             backgroundColor: mode === "light" ? "#fff" : "#121212",
             color: mode === "light" ? "#121212" : "#fff", 
-            borderRight: `1px solid ${mode === "light" ? "#ddd" : "#333"}`,
+            borderRight: `1px solid ${mode === "light" ? "#DDD" : "#333"}`,
           },
         },
       },

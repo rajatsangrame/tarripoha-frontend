@@ -6,14 +6,16 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import CorporateFare from "@mui/icons-material/CorporateFare";
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import ToolbarAccount from "./ToolbarAccount";
+import { useThemeContext } from "../context/ThemeContext";
 
 interface AppToolbarProps {
-    isDarkMode: boolean;
     drawerOpen: boolean;
-    toggleTheme: () => void;
     toggleDrawer: () => void;
 }
-export const AppToolbar: React.FC<AppToolbarProps> = ({ isDarkMode, drawerOpen, toggleTheme, toggleDrawer }) => {
+
+const AppToolbar: React.FC<AppToolbarProps> = ({ drawerOpen, toggleDrawer }) => {
+    const { isDarkMode, toggleTheme } = useThemeContext();
+
     return (
         <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Toolbar>
@@ -38,3 +40,5 @@ export const AppToolbar: React.FC<AppToolbarProps> = ({ isDarkMode, drawerOpen, 
         </AppBar>
     );
 };
+
+export default AppToolbar;
